@@ -6,11 +6,13 @@ const app = express();
 app.use(express.json());
 
 // Definindo a área segura
+// Definindo a área segura com quatro coordenadas
 const areaSegura = new AreaSegura(
   new Coordenadas(0, 10),  // Superior esquerda
-  new Coordenadas(10, 0)   // Inferior direita
+  new Coordenadas(10, 10), // Superior direita
+  new Coordenadas(10, 0),  // Inferior direita
+  new Coordenadas(0, 0)    // Inferior esquerda
 );
-
 app.post('/verificar-pet', (req, res) => {
   const { x, y } = req.body;
   const pet = new Coordenadas(x, y);
